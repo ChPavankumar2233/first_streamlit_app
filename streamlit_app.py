@@ -42,7 +42,8 @@ my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 #my_cur.execute("insert into fruit_load_list values('jackfruit','papaya','kiwi','guava')")
-add_list=['jackfruit','papaya','kiwi','guava']
+series=['jackfruit','papaya','kiwi','guava']
 my_data_rows = my_cur.fetchall()
 streamlit.header("The Fruit load list contains:")
-streamlit.dataframe(my_data_rows+add_list)
+streamlit.dataframe(my_data_rows)
+streamlit.dataframe.insert(0,series)
