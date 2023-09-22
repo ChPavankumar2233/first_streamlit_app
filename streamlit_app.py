@@ -58,8 +58,7 @@ if streamlit.button('get fruit list'):
     streamlit.dataframe(my_data_rows)
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
-         #my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values('')")
-         my_cur.execute("delete from pc_rivery_db.public.fruit_load_list where FRUIT_NAME LIKE 'jackfruit')")
+         my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values(('" + new_fruit  +"')")
          return "Thanks for adding new fruit"+ new_fruit
          
         
